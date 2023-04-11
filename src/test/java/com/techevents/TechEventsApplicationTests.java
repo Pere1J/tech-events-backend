@@ -1,4 +1,4 @@
-package com.techevents.demo;
+package com.techevents;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
