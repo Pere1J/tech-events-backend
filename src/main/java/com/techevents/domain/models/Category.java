@@ -1,13 +1,14 @@
 package com.techevents.domain.models;
 
+
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Entity
-@Table(name="Users")
 @Data
+@Entity
+@Table(name="categories")
 
-public class User {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,8 +16,4 @@ public class User {
 
     private Long id;
     private String name;
-    private String lastname;
-    private String email;
-    private String password;
-
 }

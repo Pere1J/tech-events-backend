@@ -12,13 +12,25 @@ import java.util.Date;
 @Data
 public class Event {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+
 
     private Long id;
-    private String title;
-    private Long capacity;
     private String urlImage;
+    private String title;
+    private String level;
     private Date date;
     private Time hour;
+    private Long capacity;
+    private String description;
+
+
+
+    @ManyToOne(cascade= CascadeType.PERSIST)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 
 
