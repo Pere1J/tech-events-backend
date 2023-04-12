@@ -23,6 +23,8 @@ public class Event {
     private LocalDate fecha;
     private LocalTime hora;
     private Long capacity;
+    private Boolean highlight;
+    private Boolean active;
 
     @Column(length = 1000)
     private String description;
