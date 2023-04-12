@@ -3,8 +3,8 @@ package com.techevents.domain.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 @Entity
@@ -15,15 +15,16 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-
-
     private Long id;
+
     private String urlImage;
     private String title;
-    private String level;
-    private Date date;
-    private Time hour;
+    private String nivel;
+    private LocalDate fecha;
+    private LocalTime hora;
     private Long capacity;
+
+    @Column(length = 1000)
     private String description;
 
 
