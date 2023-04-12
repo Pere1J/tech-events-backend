@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
-@RequestMapping
+@CrossOrigin ("*")
+@RequestMapping("/events")
 public class eventController {
 
 private final EventService eventService;
@@ -22,11 +22,13 @@ private final IEventRepository eventRepository;
         this.eventRepository = eventRepository;
     }
 
-@GetMapping("/events")
-public ResponseEntity<List<Event>> getAll(){
+@GetMapping
+    public ResponseEntity<List<Event>> getAll(){
     return ResponseEntity.ok(this.eventService.findAll());
 }
 
-
+@GetMapping("/{id}")
+    public ResponseEntity<Event> getById(@PathVariable Long id){ return ResponseEntity.ok(this.eventService.getById(id));
+}
 
 }

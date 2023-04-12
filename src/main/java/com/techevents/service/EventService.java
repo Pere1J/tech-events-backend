@@ -20,4 +20,11 @@ private final IEventRepository eventRepository;
     }
 
 
+    public Event getById(Long id) {
+        //return this.eventRepository.findById(id).get();
+        var eventOptional = this.eventRepository.findById(id);
+        if(eventOptional.isEmpty())throw new RuntimeException("Evento no encontrado");
+        return eventOptional.get();
+
+    }
 }
