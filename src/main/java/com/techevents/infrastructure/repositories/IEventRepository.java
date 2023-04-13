@@ -8,7 +8,9 @@ import java.util.List;
 
 @Repository
 public interface IEventRepository extends JpaRepository <Event, Long> {
-    List<Event> findByHighlightTrueOrderByFechaAsc();
+    List<Event> findByHighlightTrueOrderByEventDateAsc();
+
+
 
 
 

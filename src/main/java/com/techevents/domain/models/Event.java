@@ -1,5 +1,6 @@
 package com.techevents.domain.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,12 +20,19 @@ public class Event {
 
     private String urlImage;
     private String title;
-    private String nivel;
-    private LocalDate fecha;
-    private LocalTime hora;
+    private String degree;
+    private LocalDate eventDate;
+    private LocalTime eventTime;
     private Long capacity;
     private Boolean highlight;
-    private Boolean active;
+
+    @JsonSerialize
+    public Boolean active(){
+        LocalDate actualDate = LocalDate.now();
+
+       return eventDate.isAfter(actualDate) || eventDate.isEqual(actualDate);
+
+    };
 
     @Column(length = 1000)
     private String description;
