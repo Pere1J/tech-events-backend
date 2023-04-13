@@ -25,6 +25,8 @@ private final IEventRepository eventRepository;
         var eventOptional = this.eventRepository.findById(id);
         if(eventOptional.isEmpty())throw new RuntimeException("Evento no encontrado");
         return eventOptional.get();
-
+    }
+    public List<Event> getAllHighlight(){
+        return this.eventRepository.findByHighlightTrueOrderByFechaAsc();
     }
 }

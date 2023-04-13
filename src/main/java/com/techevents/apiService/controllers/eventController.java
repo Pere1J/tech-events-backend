@@ -7,6 +7,7 @@ import com.techevents.service.EventService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -24,12 +25,18 @@ private final IEventRepository eventRepository;
     }
 
 @GetMapping
-    public ResponseEntity<List<Event>> getAll(){
-    return ResponseEntity.ok(this.eventService.findAll());
+    //public ResponseEntity<List<Event>> getAll(){
+    //return ResponseEntity.ok(this.eventService.findAll());}
+public ResponseEntity<List<Event>> getAll(){
+    List<Event> eventos = this.eventRepository.findAll();
+    eventos.sort(Comparator.comparing(Event::getFecha));
+    return ResponseEntity.ok(eventos);
 }
 
 @GetMapping("/{id}")
-    public ResponseEntity<Event> getById(@PathVariable Long id){ return ResponseEntity.ok(this.eventService.getById(id));
-}
+    public ResponseEntity<Event> getById(@PathVariable Long id){ return ResponseEntity.ok(this.eventService.getById(id));}
+
+@GetMapping("/highlight")
+    public ResponseEntity<List<Event>> getAllHighlight() {return ResponseEntity.ok(this.eventService.getAllHighlight());}
 
 }
