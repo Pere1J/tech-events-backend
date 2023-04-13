@@ -43,5 +43,7 @@ INTO
   events
   (url_image, title, nivel, fecha, hora, capacity, highlight, active,description, category_id)
 VALUES
-  ('https://i.ytimg.com/vi/1xFscRkO8QU/maxresdefault.jpg', 'Curso Avanzado de Programacion','Advanced', '2023-05-01', '08:00', 100, TRUE, TRUE,'This course teaches additional skills and techniques to programmers who can already write comprehensive RPG IV programs.                       This class offers a comprehensive discussion of some of the advanced features and functions of RPG IV. This class is designed to enable an experienced RPG IV programmer to develop and maintain RPG IV programs of an advanced level using the latest features and techniques available in the IBM i RPG IV compiler.', 1);
+  ('https://i.ytimg.com/vi/1xFscRkO8QU/maxresdefault.jpg', 'Curso Avanzado de Programacion','Advanced', '2023-02-01', '08:00', 100, TRUE, TRUE,'This course teaches additional skills and techniques to programmers who can already write comprehensive RPG IV programs.                       This class offers a comprehensive discussion of some of the advanced features and functions of RPG IV. This class is designed to enable an experienced RPG IV programmer to develop and maintain RPG IV programs of an advanced level using the latest features and techniques available in the IBM i RPG IV compiler.', 1);
+
+
 
