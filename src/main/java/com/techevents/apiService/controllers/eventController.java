@@ -26,7 +26,7 @@ private final IEventRepository eventRepository;
         this.eventRepository = eventRepository;
     }
 
-//@GetMapping
+@GetMapping
     //public ResponseEntity<List<Event>> getAll(){return ResponseEntity.ok(this.eventService.findAll());}
     public ResponseEntity<List<Event>> getAll(){
         List<Event> eventos = this.eventRepository.findAll(); eventos.sort(Comparator.comparing(Event::getFecha));
