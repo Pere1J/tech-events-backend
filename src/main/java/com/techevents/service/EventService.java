@@ -3,6 +3,7 @@ package com.techevents.service;
 import com.techevents.domain.models.Event;
 import com.techevents.infrastructure.repositories.IEventRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 @Service
@@ -28,5 +29,8 @@ private final IEventRepository eventRepository;
     }
     public List<Event> getAllHighlight(){
         return this.eventRepository.findByHighlightTrueOrderByEventDateAsc();
+    }
+    public List<Event> findEventByCategory(@PathVariable Long id){
+        return eventRepository.findByCategory_Id(id);
     }
 }

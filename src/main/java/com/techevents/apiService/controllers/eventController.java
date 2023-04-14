@@ -16,24 +16,35 @@ import java.util.List;
 
 public class eventController {
 
-private final EventService eventService;
-private final IEventRepository eventRepository;
+    private final EventService eventService;
+    private final IEventRepository eventRepository;
 
     public eventController(EventService eventService, IEventRepository eventRepository) {
         this.eventService = eventService;
         this.eventRepository = eventRepository;
     }
 
-@GetMapping
+    @GetMapping
     //public ResponseEntity<List<Event>> getAll(){return ResponseEntity.ok(this.eventService.findAll());}
-    public ResponseEntity<List<Event>> getAll(){
-        List<Event> eventos = this.eventRepository.findAll(); eventos.sort(Comparator.comparing(Event::getEventDate));
-        return ResponseEntity.ok(eventos);}
+    public ResponseEntity<List<Event>> getAll() {
+        List<Event> eventos = this.eventRepository.findAll();
+        eventos.sort(Comparator.comparing(Event::getEventDate));
+        return ResponseEntity.ok(eventos);
+    }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Event> getById(@PathVariable Long id){ return ResponseEntity.ok(this.eventService.getById(id));}
+    public ResponseEntity<Event> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(this.eventService.getById(id));
+    }
 
-@GetMapping("/highlight")
-    public ResponseEntity<List<Event>> getAllHighlight() {return ResponseEntity.ok(this.eventService.getAllHighlight());}
+    @GetMapping("/highlight")
+    public ResponseEntity<List<Event>> getAllHighlight() {
+        return ResponseEntity.ok(this.eventService.getAllHighlight());
+    }
 
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<Event>> findEventByCategory(@PathVariable Long id) {
+        return ResponseEntity.ok(this.eventService.findEventByCategory(id));
+
+    }
 }
