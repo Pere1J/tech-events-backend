@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/categories")
+@RequestMapping("/events")
 public class categoryController {
 
     private final CategoryService categoryService;
@@ -24,7 +24,7 @@ public class categoryController {
         this.categoryService = categoryService;
         this.categoryRepository = categoryRepository;
     }
-    @GetMapping
+    @GetMapping("/categories")
     public ResponseEntity<List<Category>> getAll(){
         return ResponseEntity.ok(this.categoryService.findAll());
     }
