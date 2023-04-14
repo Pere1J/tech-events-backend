@@ -1,5 +1,6 @@
 package com.techevents.infrastructure.repositories;
 
+import com.techevents.domain.models.Category;
 import com.techevents.domain.models.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +14,7 @@ public interface IEventRepository extends JpaRepository <Event, Long> {
     List<Event> findByHighlightTrueOrderByEventDateAsc();
     @Query("select s from Event s where s.category.id = ?1")
     List<Event> findByCategory_Id(@PathVariable Long id);
+
 
 
 

@@ -61,7 +61,7 @@ INTO
   events
   (url_image, title, degree, event_date, event_time, capacity, highlight,description, category_id)
 VALUES
-  ('https://assets2-programarya-com.juandmegon.com/img/Cursos-Avanzados/Peticiones-HTTP-con-Laravel/icon.png', 'Webinar fundamentos de Java','Beginner', '2023-04-01', '08:30', 50, TRUE,
+  ('https://i.ytimg.com/vi/quq5142QEiA/maxresdefault.jpg', 'Webinar fundamentos de Java','Beginner', '2023-04-01', '08:30', 50, TRUE,
   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 2);
 ------
 INSERT
@@ -86,7 +86,7 @@ INTO
   events
   (url_image, title, degree, event_date, event_time, capacity, highlight,description, category_id)
 VALUES
-  ('https://coderslink.com/wp-content/uploads/2021/02/Primeros-pasos-en-Machine-Learning-con-TensorFlow.jpg', 'Work Shop Inteligencia Artificial con TensorFlow','Advanced', '2023-07-04', '09:00', 20, TRUE,
+  ('https://www.nextraining.es/wp-content/uploads/2021/01/MEAN-Stack-MongoDB-Express.js-AngularJS-y-NodeJS.png', 'Work Shop Inteligencia Artificial con TensorFlow','Advanced', '2023-07-04', '09:00', 20, TRUE,
   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 1);
 
 INSERT
