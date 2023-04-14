@@ -1,6 +1,7 @@
 package com.techevents.apiService.controllers;
 
 
+import com.techevents.domain.dtos.EventRequest;
 import com.techevents.domain.models.Event;
 import com.techevents.infrastructure.repositories.IEventRepository;
 import com.techevents.service.EventService;
@@ -45,6 +46,15 @@ public class eventController {
     @GetMapping("/category/{id}")
     public ResponseEntity<List<Event>> findEventByCategory(@PathVariable Long id) {
         return ResponseEntity.ok(this.eventService.findEventByCategory(id));
+
+    }
+
+    @PostMapping
+    //----> añadimos la necesidad de usuario autorizado
+    //@PreAuthorize("hasAuthority('USER')")
+    public ResponseEntity<Event> create(@RequestBody EventRequest request){
+
+        return ResponseEntity.ok(this.eventService.create(request));
 
     }
 }
