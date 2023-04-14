@@ -28,9 +28,9 @@ public class eventController {
     @GetMapping
     //public ResponseEntity<List<Event>> getAll(){return ResponseEntity.ok(this.eventService.findAll());}
     public ResponseEntity<List<Event>> getAll() {
-        List<Event> eventos = this.eventRepository.findAll();
-        eventos.sort(Comparator.comparing(Event::getEventDate));
-        return ResponseEntity.ok(eventos);
+        List<Event> eventList = this.eventRepository.findAll();
+        eventList.sort(Comparator.comparing(Event::getEventDate));
+        return ResponseEntity.ok(eventList);
     }
 
     @GetMapping("/{id}")
