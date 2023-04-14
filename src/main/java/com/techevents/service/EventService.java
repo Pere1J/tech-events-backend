@@ -29,4 +29,5 @@ private final IEventRepository eventRepository;
     public List<Event> getAllHighlight(){
         return this.eventRepository.findByHighlightTrueOrderByEventDateAsc();
     }
+
 }
