@@ -30,11 +30,8 @@ private final IEventRepository eventRepository;
     public List<Event> getAllHighlight(){
         return this.eventRepository.findByHighlightTrueOrderByEventDateAsc();
     }
-<<<<<<< HEAD
+
     public List<Event> findEventByCategory(@PathVariable Long id){
         return eventRepository.findByCategory_Id(id);
     }
-=======
-
->>>>>>> 2fa7071caa899944e60b32a46b664e7e4c04a54b
 }
