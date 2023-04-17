@@ -41,7 +41,7 @@ public class SecurityConfiguration {
               .disable()
               .authorizeHttpRequests()
               //a continuación se indican las págs q no necesitan autorización
-              .requestMatchers("/books/**", "/**")
+              .requestMatchers("/events/**", "/**")
               .permitAll()
 
               .requestMatchers(new AntPathRequestMatcher("/h2-console/**"))
@@ -56,7 +56,7 @@ public class SecurityConfiguration {
               .authenticationProvider(authenticationProvider)
               .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
               .logout()
-              .logoutUrl("/api/v1/auth/logout")
+              .logoutUrl("/events/auth/logout")
               .addLogoutHandler(logoutHandler)
               .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
       ;

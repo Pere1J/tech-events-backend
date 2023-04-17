@@ -25,8 +25,7 @@ public class AuthenticationService {
   public AuthenticationResponse register(RegisterRequest request) {
     if(repository.findByEmail(request.getEmail()).isPresent()){return null;}
     var user = User.builder()
-        .firstname(request.getFirstname())
-        .lastname(request.getLastname())
+        .name(request.getName())
         .email(request.getEmail())
         .password(passwordEncoder.encode(request.getPassword()))
         .role(Role.USER)
@@ -36,7 +35,7 @@ public class AuthenticationService {
     saveUserToken(savedUser, jwtToken);
     return AuthenticationResponse.builder()
         .token(jwtToken)
-            .firstName(user.getFirstname())
+            .name(user.getName())
             .email(user.getEmail())
             .role(user.getRole())
         .build();
@@ -56,7 +55,7 @@ public class AuthenticationService {
     saveUserToken(user, jwtToken);
     return AuthenticationResponse.builder()
         .token(jwtToken)
-            .firstName(user.getFirstname())
+            .name(user.getName())
             .email(user.getEmail())
             .role(user.getRole())
         .build();

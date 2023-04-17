@@ -25,7 +25,7 @@ public class InitUsers {
     public void initUsers() {
         var user = User.builder()
                 .email("admin@admin.com")
-                .firstname("Admin")
+                .name("Admin")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ADMIN)
                 .build();
@@ -37,7 +37,7 @@ public class InitUsers {
         authenticationService.authenticate(authReq);
         var registerRequest = RegisterRequest.builder()
                 .email("user@user.com")
-                .firstname("User")
+                .name("User")
                 .password("password")
                 .build();
         authenticationService.register(registerRequest);

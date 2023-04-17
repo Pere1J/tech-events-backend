@@ -26,8 +26,7 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue
   private Long id;
-  private String firstname;
-  private String lastname;
+  private String name;
   private String email;
 
   @ManyToMany
