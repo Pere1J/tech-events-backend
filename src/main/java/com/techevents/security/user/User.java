@@ -30,7 +30,12 @@ public class User implements UserDetails {
   private String lastname;
   private String email;
 
-
+  @ManyToMany
+  @JoinTable(
+          name = "user_event",
+          joinColumns = @JoinColumn(name = "user_id"),
+          inverseJoinColumns = @JoinColumn(name = "event_id"))
+  private List<Event> events;
 
 
 

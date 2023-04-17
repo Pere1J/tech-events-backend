@@ -27,7 +27,7 @@ public class Event {
     private LocalTime eventTime;
     private Long capacity;
     private Boolean highlight;
-    private Long inscribed;
+
 
     @JsonSerialize
     public Boolean active(){
@@ -48,9 +48,12 @@ public class Event {
 
 
 
+
+
+
     //UserControl
-    //@OneToMany (mappedBy = "event")
-   // private List<User> inscribed;
+    @ManyToMany(mappedBy = "events")
+    private List<User> users;
 
 
 
