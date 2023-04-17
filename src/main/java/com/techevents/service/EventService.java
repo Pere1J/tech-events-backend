@@ -59,4 +59,8 @@ private final ICategoryRepository categoryRepository;
 
         return this.eventRepository.save(event);
     }
+
+    public void deleteById(Long id) {
+        this.eventRepository.deleteById(id);
+    }
 }

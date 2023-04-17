@@ -6,6 +6,7 @@ import com.techevents.domain.models.Event;
 import com.techevents.infrastructure.repositories.IEventRepository;
 import com.techevents.service.EventService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
@@ -56,5 +57,13 @@ public class eventController {
 
         return ResponseEntity.ok(this.eventService.create(request));
 
+    }
+
+
+    @DeleteMapping("/{id}")
+    //----> añadimos la necesidad de usuario autorizado
+    //@PreAuthorize("hasAuthority('ADMIN')")
+    public void deleteById(@PathVariable Long id){
+        this.eventService.deleteById(id);
     }
 }
