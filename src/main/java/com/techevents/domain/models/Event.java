@@ -1,11 +1,13 @@
 package com.techevents.domain.models;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.techevents.security.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 
 @Entity
@@ -25,6 +27,7 @@ public class Event {
     private LocalTime eventTime;
     private Long capacity;
     private Boolean highlight;
+    private Long inscribed;
 
     @JsonSerialize
     public Boolean active(){
@@ -43,6 +46,11 @@ public class Event {
     @JoinColumn(name = "category_id")
     private Category category;
 
+
+
+    //UserControl
+    //@OneToMany (mappedBy = "event")
+   // private List<User> inscribed;
 
 
 

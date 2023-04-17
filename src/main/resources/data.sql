@@ -1,6 +1,5 @@
 
-
-
+--categories
 INSERT
 INTO
   categories
@@ -120,3 +119,5 @@ VALUES
   VALUES
     ('https://factor3d.com/wp-content/uploads/2020/07/La-gu%C3%ADa-definitiva-del-desarrollo-de-videojuegos-con-Unity.jpg', 'Work Shop Desarrolo de videojuegos con Unity','Intermediate', '2023-07-01', '09:00', 30, TRUE,
     'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 1);
+
+
