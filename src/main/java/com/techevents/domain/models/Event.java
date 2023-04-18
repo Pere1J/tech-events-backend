@@ -56,6 +56,7 @@ public class Event {
     private List<User> users;
 
     public void addUserRegister(User user) {
+
         users.add(user);
 
     }
