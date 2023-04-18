@@ -8,6 +8,7 @@ import com.techevents.security.auth.AuthFacade;
 import com.techevents.security.user.User;
 import com.techevents.service.EventService;
 import com.techevents.service.UserService;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -77,30 +78,19 @@ public class eventController {
         this.eventService.deleteById(id);
     }
     @PostMapping("/{id}/register")
-    public ResponseEntity<String>  registerForEvent(@PathVariable("eventId") Long eventId) {
-       // Obtener el evento por su ID
-        Event event = eventService.getById(eventId);
+    @Transactional
+    @PreAuthorize("hasAuthority('USER')")
+    public ResponseEntity<Event> registerForEvent(@PathVariable Long id) {
+        User currentUser = this.authFacade.getAuthUser();
+        Event event = this.eventService.getById(id);
 
-        // Comprobar si el usuario está autenticado
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null && auth.isAuthenticated()) {
-            // El usuario está autenticado, obtener su nombre de usuario
-            String username = auth.getName();
-
-            // Buscar el usuario por su nombre de usuario
-            User user = userService.getByName(username);
-
-            // Registrar al usuario en el evento
-            eventService.RegisterUserForEvent(user, event);
-
-
-           // Redirigir a la vista de confirmación de registro
-            return ResponseEntity.ok("Event registration successful");
-        } else {
-            // El usuario no está autenticado, redirigir a la página de inicio de sesión
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).header("Location", "/login").build();
-        }
+        event.addUserRegister(currentUser);
+        //System.out.println(event.getUsers().size());
+        this.eventRepository.save(event);
+        return ResponseEntity.ok(event);
     }
+
+
     @GetMapping("/test")
     @PreAuthorize("hasAuthority('USER')")
     public User test(){
