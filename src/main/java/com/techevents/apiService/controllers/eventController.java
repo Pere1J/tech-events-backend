@@ -6,14 +6,12 @@ import com.techevents.domain.models.Event;
 import com.techevents.infrastructure.repositories.IEventRepository;
 import com.techevents.security.auth.AuthFacade;
 import com.techevents.security.user.User;
+import com.techevents.security.user.UserRepository;
 import com.techevents.service.EventService;
 import com.techevents.service.UserService;
 import jakarta.transaction.Transactional;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
@@ -30,12 +28,14 @@ public class eventController {
     private final EventService eventService;
     private final IEventRepository eventRepository;
     private final UserService userService;
+    private  final UserRepository userRepository;
 
-    public eventController(AuthFacade authFacade, EventService eventService, IEventRepository eventRepository, UserService userService) {
+    public eventController(AuthFacade authFacade, EventService eventService, IEventRepository eventRepository, UserService userService, UserRepository userRepository) {
         this.authFacade = authFacade;
         this.eventService = eventService;
         this.eventRepository = eventRepository;
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping
@@ -82,10 +82,12 @@ public class eventController {
     @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<Event> registerForEvent(@PathVariable Long id) {
         User currentUser = this.authFacade.getAuthUser();
+
         Event event = this.eventService.getById(id);
 
         event.addUserRegister(currentUser);
-        //System.out.println(event.getUsers().size());
+        currentUser.getEvents().add(event);
+        this.userRepository.save(currentUser);
         this.eventRepository.save(event);
         return ResponseEntity.ok(event);
     }
