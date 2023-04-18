@@ -55,6 +55,10 @@ public class Event {
     @ManyToMany(mappedBy = "events")
     private List<User> users;
 
+    public void addUserRegister(User user) {
+        users.add(user);
+    }
+
 
 
 

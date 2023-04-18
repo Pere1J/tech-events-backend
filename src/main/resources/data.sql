@@ -135,7 +135,7 @@ VALUES
 --  (1, 2);
 --  INSERT
 --  INTO
---    user_event
---    (event_id, user_id)
+--  user_event
+--  (event_id, user_id)
 --  VALUES
---    (1, 1);
+--  (1, 1);

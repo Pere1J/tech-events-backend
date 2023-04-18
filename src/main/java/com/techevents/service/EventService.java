@@ -4,6 +4,7 @@ import com.techevents.domain.dtos.EventRequest;
 import com.techevents.domain.models.Event;
 import com.techevents.infrastructure.repositories.ICategoryRepository;
 import com.techevents.infrastructure.repositories.IEventRepository;
+import com.techevents.security.user.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -62,5 +63,8 @@ private final ICategoryRepository categoryRepository;
 
     public void deleteById(Long id) {
         this.eventRepository.deleteById(id);
+    }
+
+    public void RegisterUserForEvent(User user, Event event)  {event.addUserRegister(user);
     }
 }
