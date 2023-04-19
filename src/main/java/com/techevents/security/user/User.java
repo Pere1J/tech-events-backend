@@ -29,7 +29,7 @@ public class User implements UserDetails {
   private String name;
   private String email;
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @JoinTable(
           name = "user_event",
           joinColumns = @JoinColumn(name = "user_id"),
@@ -82,4 +82,9 @@ public class User implements UserDetails {
   public boolean isEnabled() {
     return true;
   }
+
+
+
 }
+
+

@@ -1,6 +1,7 @@
 package com.techevents.domain.models;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.techevents.infrastructure.repositories.IEventRepository;
 import com.techevents.security.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -52,7 +53,7 @@ public class Event {
 
 
     //UserControl
-    @ManyToMany(mappedBy = "events")
+    @ManyToMany(mappedBy = "events", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> users;
 
     public void addUserRegister(User user) {
@@ -60,8 +61,8 @@ public class Event {
         users.add(user);
 
     }
-
-
+@OneToMany
+private List<InscribedUser>inscribedUsers;
 
 
 

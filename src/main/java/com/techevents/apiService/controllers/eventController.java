@@ -67,7 +67,6 @@ public class eventController {
     public ResponseEntity<Event> create(@RequestBody EventRequest request){
 
         return ResponseEntity.ok(this.eventService.create(request));
-
     }
 
 
@@ -86,8 +85,8 @@ public class eventController {
         Event event = this.eventService.getById(id);
 
         event.addUserRegister(currentUser);
-        currentUser.getEvents().add(event);
-        this.userRepository.save(currentUser);
+        //currentUser.getEvents().add(event);
+        //this.userRepository.save(currentUser);
         this.eventRepository.save(event);
         return ResponseEntity.ok(event);
     }
