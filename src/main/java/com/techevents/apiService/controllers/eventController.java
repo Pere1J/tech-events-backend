@@ -4,10 +4,12 @@ package com.techevents.apiService.controllers;
 import com.techevents.domain.dtos.EventRequest;
 import com.techevents.domain.models.Event;
 import com.techevents.infrastructure.repositories.IEventRepository;
+import com.techevents.infrastructure.repositories.IInscribedUserRepository;
 import com.techevents.security.auth.AuthFacade;
 import com.techevents.security.user.User;
 import com.techevents.security.user.UserRepository;
 import com.techevents.service.EventService;
+import com.techevents.service.InscribedUserService;
 import com.techevents.service.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
@@ -29,13 +31,15 @@ public class eventController {
     private final IEventRepository eventRepository;
     private final UserService userService;
     private  final UserRepository userRepository;
+    private final InscribedUserService inscribedUserService;
 
-    public eventController(AuthFacade authFacade, EventService eventService, IEventRepository eventRepository, UserService userService, UserRepository userRepository) {
+    public eventController(AuthFacade authFacade, EventService eventService, IEventRepository eventRepository, UserService userService, UserRepository userRepository, IInscribedUserRepository inscribedUserRepository, InscribedUserService inscribedUserService) {
         this.authFacade = authFacade;
         this.eventService = eventService;
         this.eventRepository = eventRepository;
         this.userService = userService;
         this.userRepository = userRepository;
+        this.inscribedUserService = inscribedUserService;
     }
 
     @GetMapping
@@ -96,6 +100,13 @@ public class eventController {
     @PreAuthorize("hasAuthority('USER')")
     public User test(){
       return this.authFacade.getAuthUser();
+
+    }
+    @PostMapping("/{eventId}/inscribed")
+    public ResponseEntity inscribedEvent(@PathVariable Long eventId){
+        inscribedUserService.inscribedEvent(eventId);
+        return ResponseEntity.noContent().build();
+
 
     }
 

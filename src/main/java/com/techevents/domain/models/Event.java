@@ -1,5 +1,7 @@
 package com.techevents.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.techevents.infrastructure.repositories.IEventRepository;
 import com.techevents.security.user.User;
@@ -61,10 +63,15 @@ public class Event {
         users.add(user);
 
     }
-@OneToMany
-private List<InscribedUser>inscribedUsers;
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "event_id")
+    private List<InscribedUser>inscribedUsers;
 
-
+    @JsonProperty
+    public int inscribedUsersCount(){
+        return this.inscribedUsers.size();
+    }
 
 
 
