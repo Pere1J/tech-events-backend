@@ -74,5 +74,7 @@ public class Event {
     }
 
 
-
+    public boolean isInscribedUserById(User user) {
+        return inscribedUsers.stream().anyMatch(inscribedUser -> inscribedUser.getUser().equals(user));
+    }
 }
