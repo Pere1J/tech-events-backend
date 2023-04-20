@@ -43,9 +43,10 @@ public class eventController {
     }
 
     @GetMapping
+
     //public ResponseEntity<List<Event>> getAll(){return ResponseEntity.ok(this.eventService.findAll());}
     public ResponseEntity<List<Event>> getAll() {
-        List<Event> eventList = this.eventRepository.findAll();
+        List<Event> eventList = this.eventService.findAll();
         eventList.sort(Comparator.comparing(Event::getEventDate));
         return ResponseEntity.ok(eventList);
     }
@@ -103,6 +104,7 @@ public class eventController {
 
     }
     @PostMapping("/{eventId}/inscribed")
+
     public ResponseEntity inscribedEvent(@PathVariable Long eventId){
         inscribedUserService.inscribedEvent(eventId);
         return ResponseEntity.noContent().build();

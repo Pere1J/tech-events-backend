@@ -2,7 +2,6 @@ package com.techevents.service;
 
 import com.techevents.domain.dtos.EventRequest;
 import com.techevents.domain.models.Event;
-import com.techevents.domain.models.InscribedUser;
 import com.techevents.infrastructure.repositories.ICategoryRepository;
 import com.techevents.infrastructure.repositories.IEventRepository;
 import com.techevents.security.auth.AuthFacade;
@@ -30,9 +29,10 @@ private final AuthFacade authFacade;
 
     public List<Event> findAll() {
         var auth = authFacade.getAuthUser();
+
         var eventList = this.eventRepository.findAll();
         eventList.forEach(event -> {
-            event.isInscribedUserById(auth);
+            event.isUserInscribed(auth);
         });
 
 

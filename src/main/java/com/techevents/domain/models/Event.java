@@ -3,7 +3,6 @@ package com.techevents.domain.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.techevents.infrastructure.repositories.IEventRepository;
 import com.techevents.security.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -49,12 +48,14 @@ public class Event {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    private Boolean isInscribedUser;
+@Transient
+    private Boolean isInscribedUser = false;
 
 
 
 
     //UserControl
+   @JsonIgnore
     @ManyToMany(mappedBy = "events", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> users;
 
@@ -74,7 +75,7 @@ public class Event {
     }
 
 //@JsonProperty
-    public Boolean isInscribedUserById(User user) {
+    public  Boolean isUserInscribed(User user) {
         if (inscribedUsers.stream().anyMatch(inscribedUser -> inscribedUser.getUser().equals(user))) {
             this.isInscribedUser = true;
             return true;
