@@ -2,8 +2,10 @@ package com.techevents.service;
 
 import com.techevents.domain.dtos.EventRequest;
 import com.techevents.domain.models.Event;
+import com.techevents.domain.models.InscribedUser;
 import com.techevents.infrastructure.repositories.ICategoryRepository;
 import com.techevents.infrastructure.repositories.IEventRepository;
+import com.techevents.security.auth.AuthFacade;
 import com.techevents.security.user.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,15 +17,28 @@ public class EventService {
 
 private final IEventRepository eventRepository;
 private final ICategoryRepository categoryRepository;
+private final AuthFacade authFacade;
 
-    public EventService(IEventRepository eventRepository, ICategoryRepository categoryRepository) {
+
+    public EventService(IEventRepository eventRepository, ICategoryRepository categoryRepository, AuthFacade authFacade) {
         this.eventRepository = eventRepository;
         this.categoryRepository = categoryRepository;
+        this.authFacade = authFacade;
+
     }
 
 
-    public List<Event> findAll(){return this.eventRepository.findAll();
+    public List<Event> findAll() {
+        var auth = authFacade.getAuthUser();
+        var eventList = this.eventRepository.findAll();
+        eventList.forEach(event -> {
+            event.isInscribedUserById(auth);
+        });
+
+
+        return eventList;
     }
+
 
 
     public Event getById(Long id) {

@@ -49,7 +49,7 @@ public class Event {
     @JoinColumn(name = "category_id")
     private Category category;
 
-
+    private Boolean isInscribedUser;
 
 
 
@@ -73,8 +73,13 @@ public class Event {
         return this.inscribedUsers.size();
     }
 
-
-    public boolean isInscribedUserById(User user) {
-        return inscribedUsers.stream().anyMatch(inscribedUser -> inscribedUser.getUser().equals(user));
+//@JsonProperty
+    public Boolean isInscribedUserById(User user) {
+        if (inscribedUsers.stream().anyMatch(inscribedUser -> inscribedUser.getUser().equals(user))) {
+            this.isInscribedUser = true;
+            return true;
+        };
+        this.isInscribedUser = false;
+        return false;
     }
 }
