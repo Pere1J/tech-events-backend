@@ -35,11 +35,11 @@ private final AuthFacade authFacade;
 
     public List<Event> findAll() {
 
-        var auth = authFacade.getAuthUser();
+        //var auth = authFacade.getAuthUser();
         var eventList = this.eventRepository.findAll();
-        eventList.forEach(event -> {
-            event.isUserInscribed(auth);
-        });
+//        eventList.forEach(event -> {
+//            event.isUserInscribed(auth);
+//        });
        return eventList;
     }
 
