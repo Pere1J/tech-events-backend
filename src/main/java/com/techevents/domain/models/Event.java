@@ -70,6 +70,7 @@ public class Event {
     private List<InscribedUser>inscribedUsers;
 
     @JsonProperty
+
     public int inscribedUsersCount(){
         return this.inscribedUsers.size();
     }
