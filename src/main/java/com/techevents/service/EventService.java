@@ -9,7 +9,12 @@ import com.techevents.security.user.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 
 public class EventService {
@@ -26,20 +31,45 @@ private final AuthFacade authFacade;
 
     }
 
+//esto funciona solo si el usr está autenticado
 
     public List<Event> findAll() {
-        var auth = authFacade.getAuthUser();
 
+        var auth = authFacade.getAuthUser();
         var eventList = this.eventRepository.findAll();
         eventList.forEach(event -> {
             event.isUserInscribed(auth);
         });
-
-
-        return eventList;
+       return eventList;
     }
 
 
+
+// esta verificación no funciona
+//    public List<Event> findAll() {
+//        var auth = authFacade.getAuthUser();
+//        var eventList = this.eventRepository.findAll();
+//        if (authFacade.getAuthUser() == null) {
+//            return eventList;
+//        } else {
+//            eventList.forEach(event -> {
+//                event.isUserInscribed(auth);
+//            });
+//            return eventList;
+//        }
+//    }
+
+  //esta verificacion tampoco funciona
+//  public List<Event> findAll() {
+//        var auth = authFacade.getAuthUser();
+//        var eventList = this.eventRepository.findAll();
+//        if (Optional.ofNullable(auth).isPresent()) {
+//            eventList.forEach(event -> {
+//                event.isUserInscribed(auth);
+//            });
+//        }
+//        return eventList;
+//    }
 
     public Event getById(Long id) {
         //return this.eventRepository.findById(id).get();

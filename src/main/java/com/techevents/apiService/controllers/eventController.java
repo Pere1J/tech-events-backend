@@ -68,7 +68,7 @@ public class eventController {
 
     @PostMapping
     //----> añadimos la necesidad de usuario autorizado
-    //@PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Event> create(@RequestBody EventRequest request){
 
         return ResponseEntity.ok(this.eventService.create(request));
@@ -77,7 +77,7 @@ public class eventController {
 
     @DeleteMapping("/{id}")
     //----> añadimos la necesidad de usuario autorizado
-    //@PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void deleteById(@PathVariable Long id){
         this.eventService.deleteById(id);
     }
