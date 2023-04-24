@@ -35,29 +35,20 @@ private final AuthFacade authFacade;
 
     public List<Event> findAll() {
 
-       //var auth = authFacade.getAuthUser();
+       var auth = authFacade.getOptionalAuthUser();
         var eventList = this.eventRepository.findAll();
-//        eventList.forEach(event -> {
-//            event.isUserInscribed(auth);
-//        });
+        if (auth.isPresent()){
+            eventList.forEach(event -> {
+            event.isUserInscribed(auth.get());
+            });
+        }
+
        return eventList;
     }
 
 
 
-// esta verificación no funciona
-//    public List<Event> findAll() {
-//        var auth = authFacade.getAuthUser();
-//        var eventList = this.eventRepository.findAll();
-//        if (authFacade.getAuthUser() == null) {
-//            return eventList;
-//        } else {
-//            eventList.forEach(event -> {
-//                event.isUserInscribed(auth);
-//            });
-//            return eventList;
-//        }
-//    }
+
 
   //esta verificacion tampoco funciona
 //  public List<Event> findAll() {
