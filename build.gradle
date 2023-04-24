@@ -28,6 +28,10 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+//Spring Java mail
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 //Spring Security JWT
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'

@@ -29,7 +29,7 @@ public class InscribedUserService {
         var inscribedUser =  new InscribedUser(auth, event);
         inscribedUserRepository.save(inscribedUser);
 
-// video minuto 10 de manytomany02
+
     }
 
 }
