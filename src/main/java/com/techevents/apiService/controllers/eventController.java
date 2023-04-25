@@ -115,8 +115,12 @@ public class eventController {
         inscribedUserService.inscribedEvent(eventId);
         sendMailService.send_mail();
         return ResponseEntity.noContent().build();
-
-
     }
+
+    @PutMapping("/{id}")
+    public void editById(@PathVariable Long id, @RequestBody EventRequest changes){
+        this.eventService.editById(id, changes);
+    }
+
 
 }

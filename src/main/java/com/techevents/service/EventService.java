@@ -90,4 +90,21 @@ private final AuthFacade authFacade;
 
     public void RegisterUserForEvent(User user, Event event)  {event.addUserRegister(user);
     }
+
+    public void editById(Long eventId, EventRequest newEvent){
+
+        var event = eventRepository.findById(eventId).orElseThrow(() -> new RuntimeException("Event not found"));
+        var category = categoryRepository.findById(newEvent.getCategoryId()).orElseThrow(() -> new RuntimeException("Category not found"));
+
+        event.setUrlImage(newEvent.getUrlImage());
+        event.setTitle(newEvent.getTitle());
+        event.setDegree(newEvent.getDegree());
+        event.setEventDate(newEvent.getEventDate());
+        event.setEventTime(newEvent.getEventTime());
+        event.setCapacity(newEvent.getCapacity());
+        event.setHighlight(newEvent.getHighlight());
+        event.setDescription(newEvent.getDescription());
+        event.setCategory(category);
+        eventRepository.save(event);
+    }
 }
