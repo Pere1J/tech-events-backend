@@ -25,7 +25,7 @@ public class InscribedUserService {
     public void inscribedEvent(Long eventId){
         var event = eventRepository.findById(eventId).orElseThrow(() ->new RuntimeException("event does not exist"));
         var auth = authFacade.getAuthUser();
-        if (event.isUserInscribed(auth))return; // crear una respuesta + modo de desinscribirse.
+        if (event.isUserInscribed(auth))return;
         var inscribedUser =  new InscribedUser(auth, event);
         inscribedUserRepository.save(inscribedUser);
 
