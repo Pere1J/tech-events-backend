@@ -118,6 +118,7 @@ public class eventController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editById(@PathVariable Long id, @RequestBody EventRequest changes){
         this.eventService.editById(id, changes);
     }
