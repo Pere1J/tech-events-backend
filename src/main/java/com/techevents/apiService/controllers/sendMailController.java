@@ -35,6 +35,7 @@ public class sendMailController {
 
         mail.send(email);
 
+
         return new ResponseEntity<>(true, HttpStatus.OK);
 
 
