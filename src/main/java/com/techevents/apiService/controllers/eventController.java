@@ -10,6 +10,7 @@ import com.techevents.security.user.User;
 import com.techevents.security.user.UserRepository;
 import com.techevents.service.EventService;
 import com.techevents.service.InscribedUserService;
+import com.techevents.service.SendMailService;
 import com.techevents.service.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
@@ -32,16 +33,17 @@ public class eventController {
     private final UserService userService;
     private  final UserRepository userRepository;
     private final InscribedUserService inscribedUserService;
-    private final sendMailController sendMailController;
+    private final SendMailService sendMailService;
 
-    public eventController(AuthFacade authFacade, EventService eventService, IEventRepository eventRepository, UserService userService, UserRepository userRepository, IInscribedUserRepository inscribedUserRepository, InscribedUserService inscribedUserService, com.techevents.apiService.controllers.sendMailController sendMailController) {
+    public eventController(AuthFacade authFacade, EventService eventService, IEventRepository eventRepository, UserService userService, UserRepository userRepository, IInscribedUserRepository inscribedUserRepository, InscribedUserService inscribedUserService, SendMailService SendMailService, SendMailService sendMailService) {
         this.authFacade = authFacade;
         this.eventService = eventService;
         this.eventRepository = eventRepository;
         this.userService = userService;
         this.userRepository = userRepository;
         this.inscribedUserService = inscribedUserService;
-        this.sendMailController = sendMailController;
+
+        this.sendMailService = sendMailService;
     }
 
     @GetMapping
@@ -111,7 +113,7 @@ public class eventController {
 
     public ResponseEntity inscribedEvent(@PathVariable Long eventId){
         inscribedUserService.inscribedEvent(eventId);
-        sendMailController.send_mail();
+        sendMailService.send_mail();
         return ResponseEntity.noContent().build();
 
 

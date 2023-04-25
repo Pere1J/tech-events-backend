@@ -48,20 +48,6 @@ private final AuthFacade authFacade;
 
 
 
-
-
-  //esta verificacion tampoco funciona
-//  public List<Event> findAll() {
-//        var auth = authFacade.getAuthUser();
-//        var eventList = this.eventRepository.findAll();
-//        if (Optional.ofNullable(auth).isPresent()) {
-//            eventList.forEach(event -> {
-//                event.isUserInscribed(auth);
-//            });
-//        }
-//        return eventList;
-//    }
-
     public Event getById(Long id) {
         //return this.eventRepository.findById(id).get();
         var eventOptional = this.eventRepository.findById(id);
@@ -92,6 +78,7 @@ private final AuthFacade authFacade;
         event.setCapacity(request.getCapacity());
         event.setHighlight(request.getHighlight());
         event.setDescription(request.getDescription());
+
 
 
         return this.eventRepository.save(event);

@@ -1,4 +1,4 @@
-package com.techevents.apiService.controllers;
+package com.techevents.service;
 
 
 
@@ -8,22 +8,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 
 
 @CrossOrigin("*")
+@Service
 
-@RestController
-public class sendMailController {
+public class SendMailService {
     @Autowired
     private JavaMailSender mail;
     @Autowired
     private AuthFacade authFacade;
 
 
-    @PostMapping("confirm")
+
     public ResponseEntity<?> send_mail(){
         String userMail = authFacade.getAuthUser().getEmail();
 
