@@ -29,6 +29,7 @@ public class InscribedUserService {
         var inscribedUser =  new InscribedUser(auth, event);
         inscribedUserRepository.save(inscribedUser);
 
+
     }
 
 }

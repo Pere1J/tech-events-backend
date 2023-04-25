@@ -7,6 +7,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class AuthFacade {
     private final UserRepository userRepository;
@@ -17,7 +19,9 @@ public class AuthFacade {
     public User getAuthUser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return this.userRepository.findByEmail(auth.getName()).get();
-
-
+    }
+    public Optional<User> getOptionalAuthUser(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return this.userRepository.findByEmail(auth.getName());
     }
 }

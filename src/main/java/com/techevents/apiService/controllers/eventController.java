@@ -32,14 +32,16 @@ public class eventController {
     private final UserService userService;
     private  final UserRepository userRepository;
     private final InscribedUserService inscribedUserService;
+    private final sendMailController sendMailController;
 
-    public eventController(AuthFacade authFacade, EventService eventService, IEventRepository eventRepository, UserService userService, UserRepository userRepository, IInscribedUserRepository inscribedUserRepository, InscribedUserService inscribedUserService) {
+    public eventController(AuthFacade authFacade, EventService eventService, IEventRepository eventRepository, UserService userService, UserRepository userRepository, IInscribedUserRepository inscribedUserRepository, InscribedUserService inscribedUserService, com.techevents.apiService.controllers.sendMailController sendMailController) {
         this.authFacade = authFacade;
         this.eventService = eventService;
         this.eventRepository = eventRepository;
         this.userService = userService;
         this.userRepository = userRepository;
         this.inscribedUserService = inscribedUserService;
+        this.sendMailController = sendMailController;
     }
 
     @GetMapping
@@ -93,6 +95,8 @@ public class eventController {
         //currentUser.getEvents().add(event);
         //this.userRepository.save(currentUser);
         this.eventRepository.save(event);
+
+
         return ResponseEntity.ok(event);
     }
 
@@ -107,6 +111,7 @@ public class eventController {
 
     public ResponseEntity inscribedEvent(@PathVariable Long eventId){
         inscribedUserService.inscribedEvent(eventId);
+        sendMailController.send_mail();
         return ResponseEntity.noContent().build();
 
 
