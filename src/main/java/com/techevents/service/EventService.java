@@ -50,9 +50,13 @@ private final AuthFacade authFacade;
 
     public Event getById(Long id) {
         //return this.eventRepository.findById(id).get();
+        var auth = authFacade.getOptionalAuthUser();
         var eventOptional = this.eventRepository.findById(id);
-        if(eventOptional.isEmpty())throw new RuntimeException("Evento no encontrado");
-        return eventOptional.get();
+        if(eventOptional.isEmpty()){throw new RuntimeException("Evento no encontrado");}
+        var event = eventOptional.get();
+        if(auth.isPresent()){event.isUserInscribed(auth.get());}
+
+        return event;
     }
     public List<Event> getAllHighlight(){
         return this.eventRepository.findByHighlightTrueOrderByEventDateAsc();
