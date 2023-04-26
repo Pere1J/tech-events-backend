@@ -85,4 +85,11 @@ public class Event {
         this.isInscribedUser = false;
         return false;
     }
+
+    @JsonProperty
+    public boolean isFull() {
+        return inscribedUsers.size() >= capacity;
+    }
+
+
 }
