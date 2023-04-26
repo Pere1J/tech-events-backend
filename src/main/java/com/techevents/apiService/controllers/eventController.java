@@ -47,8 +47,6 @@ public class eventController {
     }
 
     @GetMapping
-
-    //public ResponseEntity<List<Event>> getAll(){return ResponseEntity.ok(this.eventService.findAll());}
     public ResponseEntity<List<Event>> getAll() {
         List<Event> eventList = this.eventService.findAll();
         eventList.sort(Comparator.comparing(Event::getEventDate));
@@ -90,15 +88,10 @@ public class eventController {
     @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<Event> registerForEvent(@PathVariable Long id) {
         User currentUser = this.authFacade.getAuthUser();
-
         Event event = this.eventService.getById(id);
 
         event.addUserRegister(currentUser);
-        //currentUser.getEvents().add(event);
-        //this.userRepository.save(currentUser);
         this.eventRepository.save(event);
-
-
         return ResponseEntity.ok(event);
     }
 

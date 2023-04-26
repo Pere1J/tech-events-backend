@@ -2,7 +2,6 @@ package com.techevents.apiService.controllers;
 
 
 import com.techevents.domain.models.Category;
-import com.techevents.domain.models.Event;
 import com.techevents.infrastructure.repositories.ICategoryRepository;
 import com.techevents.service.CategoryService;
 import org.springframework.http.ResponseEntity;

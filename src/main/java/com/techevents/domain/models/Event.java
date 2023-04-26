@@ -76,7 +76,7 @@ public class Event {
         return this.inscribedUsers.size();
     }
 
-//@JsonProperty
+
     public  Boolean isUserInscribed(User user) {
         if (inscribedUsers.stream().anyMatch(inscribedUser -> inscribedUser.getUser().equals(user))) {
             this.isInscribedUser = true;
