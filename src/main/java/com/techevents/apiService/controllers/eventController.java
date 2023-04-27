@@ -115,6 +115,14 @@ public class eventController {
     public void editById(@PathVariable Long id, @RequestBody EventRequest changes){
         this.eventService.editById(id, changes);
     }
+    @GetMapping("/myEvents")
+    @PreAuthorize("hasAuthority('USER')")
+    public ResponseEntity<List<Event>> getAllEventsForAuthUser() {
+        User currentUser = this.authFacade.getAuthUser();
+        List<Event> events = this.userService.findAllEventsByUser(currentUser);
+        events.sort(Comparator.comparing(Event::getEventDate));
+        return ResponseEntity.ok(events);
+    }
 
 
 }
