@@ -16,6 +16,9 @@ public interface IEventRepository extends JpaRepository <Event, Long> {
     List<Event> findByCategory_Id(@PathVariable Long id);
 
 
+    List<Event> findByInscribedUsers_User_Id(Long id);
+
+
 
 
 
