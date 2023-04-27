@@ -26,16 +26,9 @@ public class UserService {
     public User getByName (String name){
     return this.userRepository.getByName(name).get();
     }
-    //public List<Event> findAllEventsByUser(User user) {
-      //  return this.eventRepository.findByInscribedUsers_User_Id(user.getId());}
     public List<Event> findAllEventsByUser(User user) {
-        var auth = authFacade.getOptionalAuthUser();
-        if (auth.isPresent() && auth.get().equals(user)) {
-            return this.eventRepository.findByInscribedUsers_User_Id(user.getId());
-        } else {
-            return Collections.emptyList();
-        }
-    }
+        return this.eventRepository.findByInscribedUsers_User_Id(user.getId());}
+
 
 
 
