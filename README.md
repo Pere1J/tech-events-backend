@@ -1,97 +1,106 @@
 :uk:
 ## Project description
-Project under development in which the administrator has the power to execute the CRUD (from the original in English: Create, Read, Update and Delete), which is used to refer to the basic functions in databases or the persistence layer in software. Therefore, the administrator can add, edit, and delete products from the store, in this case, sneakers, from the web reflecting it in the database. This marketplace, Galactica, is focused on the administrator's profile and its main functions.
+Assignment of a project that shows a collection of technological events to which users registered on the site can register.
 
-<h4 align="center">
-:construction: Project under construction :construction:
-</h4>
+The administrator must be able to:
+- register events
+- delete events
 
-## :hammer:Prerequisites
+The user must be able to:
+- consult events
+- sign up for events
+- consult the list of events to which you have registered
+  
+The events:
+- expire after the event date
+- control the number of registered
+- prevent duplicate registration of the same user
+- send registration confirmation email
+- control the total quota of registered users
 
-- Java 8 o superior instalado en tu sistema.
+
+## Prerequisites
+
+- Java 8 o superior .
 - Gradle 6.0 o superior.
  
-## :white_check_mark:Dependencies
+## Dependencies
 - Spring Boot 2.5.0
 - JPA Buddy 2.5.0
 - Lombok 1.18.20
 - Gradle 6.0
+- JWT Security
+- Java Mail
 
-## :gear:Project structure.
+
+## Project structure.
 The project is structured into three main layers:
-- `apiService`: It contains the errors, category, and sneaker controllers.
-- `domain`: It contains the DTOs, models, and services.
-- `infrastructure`: It contains the different repositories for admin, category, and sneaker.
-
-The controllers execute previously declared functions in the services. This way, we make the controllers section cleaner and easier to read and modify.
-
-## 🛠️ Open and run the project
-
-Once the prerequisites are installed, you can clone the repository from the terminal:
-```
-git clone https://github.com/CarlosJavierVilla/Api-FullStack-Application.git
-```
-Finally, you need to run the following command to compile and run the project:
-```
-gradle bootRun
-```
-We recommend running it together with the Front-End. Here is the [link to the repository](https://github.com/ItzAle/sneakers-app) with the different instructions on how to run it.
+- `apiService`: It contains the errors, category, and  controllers.
+- `domain`: It contains the DTOs and models.
+- `Service`: It contains the different "services".
+- `Security`: Contains the security infrastructure for users and administrators.
 
 
-## :bust_in_silhouette:Contributors
-[@marcygon](https://github.com/marcygon)<br>
+
+## Contributors
+
 [@saidGM](https://github.com/SaidGM)<br>
-[@ItzAle](https://github.com/ItzAle)<br>
+@Luis<br>
 [@CarlosJavierVilla](https://github.com/CarlosJavierVilla)<br>
 [@vanessa-cp](https://github.com/vanessa-cp)<br>
-
+@Pere Josep
 
 <br><br>
 
 
 :es:
 ## Descripción del proyecto
-Proyecto en desarrollo en el cual el administrador tiene el poder de ejecutar el CRUD (del original en inglés: Create, Read, Update and Delete), que se usa para referirse a las funciones básicas en bases de datos o la capa de persistencia en un software. Por ende, el administrador puede de añadir, editar y borrar los productos de la tienda, en este caso zapatillas, desde la web reflejándolo en la base de datos. Este marketplace, Galactica, está centrado en el perfil de administrador y sus principales funciones.
+Encargo de un proyecto que muestre una colección de eventos tecnológicos a los que que se puedan inscribir los usuarios registrados en el site.
 
-<h4 align="center">
-:construction: Proyecto en construcción :construction:
-</h4>
+El administrador ha de poder:
+- dar de alta los eventos
+- eliminar eventos
 
-## :hammer:Requisitos previos
+El usuario ha de poder:
+- consultar eventos
+- incribirse a los eventos
+- consultar la lista de los eventos a los que se ha inscrito
+
+
+Los eventos:
+- caducan pasada la fecha del evento
+- controlan el número de inscritos 
+- impiden la inscripción duplicada del mismo usuario
+- mandan email de confirmación de inscrpción
+- controlan el cupo total de usuarios inscritos
+
+
+
+## Requisitos previos
 
 - Java 8 o superior instalado en tu sistema.
 - Gradle 6.0 o superior.
  
-## :white_check_mark:Dependencias
+## Dependencias
 - Spring Boot 2.5.0
 - JPA Buddy 2.5.0
 - Lombok 1.18.20
 - Gradle 6.0
+- JWT Security
+- Java Mail
 
-## :gear:Estructura del proyecto
+## Estructura del proyecto
 El proyecto esta estructurado en tres capas principales:
-- `apiService`: Contiene los controladores de errores, categorías y sneakers.
-- `domain`: Contiene los DTOs, modelos y servicios.
-- `infrastructure`: Contiene los distintos repositorios para admin, category y sneaker.
-
-Los controladores ejecutan funciones previamente declaradas en los servicios, de esta manera hacemos que el apartado de controladores quede más limpio y sea más facil de leer y modificar.
-
-## 🛠️ Abre y ejecuta el proyecto
-
-Una vez que estén los requisitos instalados, ya se puede clonar desde la terminal:
-```
-git clone https://github.com/CarlosJavierVilla/Api-FullStack-Application.git
-```
-Por último hay que ejecutar el siguiente comando para compilar y ejecutar el proyecto:
-```
-gradle bootRun
-```
-Recomendamos hacerlo en compañía del Front-End, este es el [link al repositorio](https://github.com/ItzAle/sneakers-app) con las distintas instruciones de como ejecutarlo.
+- `apiService`: Contiene los controladores de errores y controllers .
+- `domain`: Contiene los DTOs, modelos .
+- `Service`: Contiene los diferentes "services".
+- `Security`: Contiene la infraestructura de seguridad de usuarios y administradores
 
 
-## :bust_in_silhouette:Personas contribuyentes
-[@marcygon](https://github.com/marcygon)<br>
+## :Colaboradores
+
 [@saidGM](https://github.com/SaidGM)<br>
-[@ItzAle](https://github.com/ItzAle)<br>
 [@CarlosJavierVilla](https://github.com/CarlosJavierVilla)<br>
 [@vanessa-cp](https://github.com/vanessa-cp)<br>
+@Pere Josep<br>
+@Luis
