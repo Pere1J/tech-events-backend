@@ -6,6 +6,7 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+
 @Data
 public class EventRequest {
 
@@ -19,8 +20,6 @@ public class EventRequest {
     private Long categoryId;
     @Column(length = 1000)
     private String description;
-
-
 
 
 }

@@ -26,11 +26,10 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue
   private Long id;
-  private String firstname;
-  private String lastname;
+  private String name;
   private String email;
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @JoinTable(
           name = "user_event",
           joinColumns = @JoinColumn(name = "user_id"),
@@ -83,4 +82,9 @@ public class User implements UserDetails {
   public boolean isEnabled() {
     return true;
   }
+
+
+
 }
+
+

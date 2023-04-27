@@ -27,7 +27,7 @@ INTO
   events
   (url_image, title, degree, event_date, event_time, capacity,  highlight, description, category_id)
 VALUES
-  ('https://i.blogs.es/164b03/curso-programacion/1366_2000.jpg', 'Webinar Buenas Prácticas en Desarrollo de Aplicaciones con React', 'Intermediate', '2023-05-20', '09:00', 50, TRUE,
+  ('https://i.blogs.es/164b03/curso-programacion/1366_2000.jpg', 'Webinar Buenas Practicas en Desarrollo de Aplicaciones con React', 'Intermediate', '2023-05-20', '09:00', 50, TRUE,
   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 2);
 
 
@@ -52,7 +52,7 @@ INTO
   events
   (url_image, title, degree, event_date, event_time, capacity, highlight,description, category_id)
 VALUES
-  ('https://databits.ai/wp-content/uploads/2020/02/Miniatura-01.png', '"Master class Introducción a la Programación en Python','Beginner', '2023-04-15', '08:30', 50, FALSE,
+  ('https://databits.ai/wp-content/uploads/2020/02/Miniatura-01.png', '"Master class Introduccion a la Programacion en Python','Beginner', '2023-04-15', '08:30', 50, FALSE,
   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 3);
 
 INSERT
@@ -68,7 +68,7 @@ INTO
   events
   (url_image, title, degree, event_date, event_time, capacity, highlight,description, category_id)
 VALUES
-  ('https://tincode-django.s3.amazonaws.com/media/learning_careers/e11ed32a-2ca9-4654-9495-9a0a59abf270.jpg', 'Work Shop Desarrollo de Aplicaciones Móviles con React Native','Intermediate', '2023-05-07', '08:00', 30, FALSE,
+  ('https://tincode-django.s3.amazonaws.com/media/learning_careers/e11ed32a-2ca9-4654-9495-9a0a59abf270.jpg', 'Work Shop Desarrollo de Aplicaciones Moviles con React Native','Intermediate', '2023-05-07', '08:00', 30, FALSE,
   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 1);
 
 INSERT
@@ -109,7 +109,7 @@ VALUES
     events
     (url_image, title, degree, event_date, event_time, capacity, highlight,description, category_id)
   VALUES
-    ('https://i.ytimg.com/vi/5sapd1rsGbs/maxresdefault.jpg', 'Webinar Desarrolo de videojuegos con Unity','Beginner', '2023-06-25', '09:00', 30, TRUE,
+    ('https://i.ytimg.com/vi/5sapd1rsGbs/maxresdefault.jpg', 'Webinar Desarrollo de videojuegos con Unity','Beginner', '2023-06-25', '09:00', 30, TRUE,
     'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 2);
 
   INSERT
@@ -117,25 +117,14 @@ VALUES
     events
     (url_image, title, degree, event_date, event_time, capacity, highlight,description, category_id)
   VALUES
-    ('https://factor3d.com/wp-content/uploads/2020/07/La-gu%C3%ADa-definitiva-del-desarrollo-de-videojuegos-con-Unity.jpg', 'Work Shop Desarrolo de videojuegos con Unity','Intermediate', '2023-07-01', '09:00', 30, TRUE,
+    ('https://factor3d.com/wp-content/uploads/2020/07/La-gu%C3%ADa-definitiva-del-desarrollo-de-videojuegos-con-Unity.jpg', 'Work Shop Desarrollo de videojuegos con Unity','Intermediate', '2023-07-01', '09:00', 30, TRUE,
     'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 1);
 
 
----user event
-
-
-
---
---
---INSERT
---INTO
---  user_event
---  (event_id, user_id)
---VALUES
---  (1, 2);
---  INSERT
---  INTO
---    user_event
---    (event_id, user_id)
---  VALUES
---    (1, 1);
+---InscribedUsers
+INSERT
+INTO
+  inscribed_users
+  (user_id, event_id)
+VALUES
+  (2, 3);

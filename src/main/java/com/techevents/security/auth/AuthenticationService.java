@@ -23,10 +23,11 @@ public class AuthenticationService {
   private final AuthenticationManager authenticationManager;
 
   public AuthenticationResponse register(RegisterRequest request) {
-    if(repository.findByEmail(request.getEmail()).isPresent()){return null;}
+    if(repository.findByEmail(request.getEmail()).isPresent())
+      throw new RuntimeException("This email already exist in our Data Base. Please try again.");
+
     var user = User.builder()
-        .firstname(request.getFirstname())
-        .lastname(request.getLastname())
+        .name(request.getName())
         .email(request.getEmail())
         .password(passwordEncoder.encode(request.getPassword()))
         .role(Role.USER)
@@ -36,7 +37,7 @@ public class AuthenticationService {
     saveUserToken(savedUser, jwtToken);
     return AuthenticationResponse.builder()
         .token(jwtToken)
-            .firstName(user.getFirstname())
+            .name(user.getName())
             .email(user.getEmail())
             .role(user.getRole())
         .build();
@@ -56,7 +57,7 @@ public class AuthenticationService {
     saveUserToken(user, jwtToken);
     return AuthenticationResponse.builder()
         .token(jwtToken)
-            .firstName(user.getFirstname())
+            .name(user.getName())
             .email(user.getEmail())
             .role(user.getRole())
         .build();
